@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="{{ store.lang|default('ar') }}" dir="{{ store.direction|default('rtl') }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{{ page.title|default(store.name) }} | {{ store.name }}{% endblock %}</title>
+  <meta name="description" content="{% block meta_description %}{{ page.description|default(store.description) }}{% endblock %}">
+
+  {# Open Graph #}
+  <meta property="og:title" content="{% block og_title %}{{ page.title|default(store.name) }}{% endblock %}">
+  <meta property="og:description" content="{{ page.description|default(store.description) }}">
+  <meta property="og:image" content="{% block og_image %}{{ store.avatar }}{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_SA">
+
+  {# Fonts #}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
+
+  {# Theme Stylesheet #}
+  <link rel="stylesheet" href="{{ 'style.css' | asset_url }}">
+
+  {# Favicon #}
+  {% if store.favicon %}
+    <link rel="icon" href="{{ store.favicon }}">
+  {% endif %}
+
+  {# Custom color overrides from theme settings #}
+  <style>
+    :root {
+      --gold:  {{ settings.color_gold  | default('#d8a64b') }};
+      --gold2: {{ settings.color_gold2 | default('#f3d18a') }};
+      --dark:  {{ settings.color_dark  | default('#030608') }};
+    }
+  </style>
+
+  {% block head_extra %}{% endblock %}
+</head>
+
+<body>
+
+  {# ── Top Announcement Strip ────────────────────── #}
+  {% if settings.top_strip_enabled != false %}
+  <div class="top-strip">
+    <div class="container">
+      <span>
+        <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M5 13l4 4L19 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ settings.top_strip_text1 | default('توصيل مجاني للطلبات فوق 500 ريال') }}
+      </span>
+      <span>
+        <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ settings.top_strip_text2 | default('منتجات مستعملة مفحوصة بضمان واضح') }}
+      </span>
+      <span>
+        <svg class="strip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+          <circle cx="12" cy="12" r="10" stroke-width="2"/>
+          <path d="M12 6v6l4 2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        {{ settings.top_strip_text3 | default('تجربة متجر سعودي فاخر') }}
+      </span>
+    </div>
+  </div>
+  {% endif %}
+
+  {# ── Header ────────────────────────────────────── #}
+  {% include 'sections/header.twig' %}
+
+  {# ── Page Content ──────────────────────────────── #}
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  {# ── Footer ────────────────────────────────────── #}
+  {% include 'sections/footer.twig' %}
+
+  {# ── Product Quick-View Modal ──────────────────── #}
+  <div class="modal" id="productModal">
+    <div class="modal-box">
+      <button class="close-modal" onclick="closeModal()">إغلاق ✕</button>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+
+  {# ── Theme JavaScript ──────────────────────────── #}
+  <script src="{{ 'app.js' | asset_url }}" defer></script>
+
+  {% block scripts %}{% endblock %}
+
+</body>
+</html>
