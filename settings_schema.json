@@ -1,0 +1,263 @@
+[
+  {
+    "name": "الهوية التجارية",
+    "settings": [
+      {
+        "type": "text",
+        "id": "store_tagline",
+        "label": "الشعار الثانوي",
+        "default": "جديد ومستعمل مضمون"
+      },
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "شعار المتجر"
+      },
+      {
+        "type": "color",
+        "id": "color_gold",
+        "label": "اللون الذهبي الأساسي",
+        "default": "#d8a64b"
+      },
+      {
+        "type": "color",
+        "id": "color_gold2",
+        "label": "اللون الذهبي الفاتح",
+        "default": "#f3d18a"
+      },
+      {
+        "type": "color",
+        "id": "color_dark",
+        "label": "لون الخلفية",
+        "default": "#030608"
+      }
+    ]
+  },
+  {
+    "name": "الشريط العلوي",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "top_strip_enabled",
+        "label": "إظهار الشريط العلوي",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "top_strip_text1",
+        "label": "النص الأول",
+        "default": "توصيل مجاني للطلبات فوق 500 ريال"
+      },
+      {
+        "type": "text",
+        "id": "top_strip_text2",
+        "label": "النص الثاني",
+        "default": "منتجات مستعملة مفحوصة بضمان واضح"
+      },
+      {
+        "type": "text",
+        "id": "top_strip_text3",
+        "label": "النص الثالث",
+        "default": "تجربة متجر سعودي فاخر"
+      }
+    ]
+  },
+  {
+    "name": "البانر الرئيسي",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "hero_image",
+        "label": "صورة البانر"
+      },
+      {
+        "type": "text",
+        "id": "hero_tag",
+        "label": "الوسم",
+        "default": "منصة سعودية للجديد والمستعمل المضمون"
+      },
+      {
+        "type": "text",
+        "id": "hero_title",
+        "label": "العنوان الرئيسي",
+        "default": "اشترِ الجديد والمستعمل"
+      },
+      {
+        "type": "text",
+        "id": "hero_title_highlight",
+        "label": "الجزء المميز من العنوان",
+        "default": "بثقة النخبة"
+      },
+      {
+        "type": "textarea",
+        "id": "hero_description",
+        "label": "وصف البانر",
+        "default": "منتجات مفحوصة، تفاصيل واضحة، ضمان، تسعير عادل، وسلة شراء ذكية."
+      },
+      {
+        "type": "text",
+        "id": "hero_btn1_text",
+        "label": "نص الزر الأول",
+        "default": "تسوّق الآن"
+      },
+      {
+        "type": "text",
+        "id": "hero_btn2_text",
+        "label": "نص الزر الثاني",
+        "default": "تصفح المستعمل"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat1_value",
+        "label": "إحصاء 1 - القيمة",
+        "default": "+250"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat1_label",
+        "label": "إحصاء 1 - التسمية",
+        "default": "منتج مفحوص"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat2_value",
+        "label": "إحصاء 2 - القيمة",
+        "default": "4.8/5"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat2_label",
+        "label": "إحصاء 2 - التسمية",
+        "default": "تقييم العملاء"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat3_value",
+        "label": "إحصاء 3 - القيمة",
+        "default": "24 ساعة"
+      },
+      {
+        "type": "text",
+        "id": "hero_stat3_label",
+        "label": "إحصاء 3 - التسمية",
+        "default": "تجهيز الطلب"
+      }
+    ]
+  },
+  {
+    "name": "الإعلان العريض",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "wide_ad_image",
+        "label": "صورة الإعلان"
+      },
+      {
+        "type": "text",
+        "id": "wide_ad_title",
+        "label": "عنوان الإعلان",
+        "default": "المستعمل صار"
+      },
+      {
+        "type": "text",
+        "id": "wide_ad_title_highlight",
+        "label": "الجزء المميز",
+        "default": "أكثر ثقة"
+      },
+      {
+        "type": "textarea",
+        "id": "wide_ad_text",
+        "label": "نص الإعلان",
+        "default": "كل منتج مستعمل يظهر بحالته، درجة نظافته، نتيجة الفحص، ومدة الضمان قبل الشراء."
+      },
+      {
+        "type": "text",
+        "id": "wide_ad_btn",
+        "label": "نص الزر",
+        "default": "تصفح المستعمل المضمون"
+      }
+    ]
+  },
+  {
+    "name": "البيع",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sell_title",
+        "label": "عنوان بانل البيع",
+        "default": "عندك منتج؟ بيعه بثقة خلال دقائق"
+      },
+      {
+        "type": "textarea",
+        "id": "sell_description",
+        "label": "وصف بانل البيع",
+        "default": "ارفع الصور، اختر الحالة، واحصل على تقييم مبدئي."
+      }
+    ]
+  },
+  {
+    "name": "الفوتر",
+    "settings": [
+      {
+        "type": "textarea",
+        "id": "footer_about",
+        "label": "نص من نحن",
+        "default": "متجر سعودي فاخر للجديد والمستعمل المضمون، يجمع بين الثقة، الفحص، التسعير العادل، وتجربة شراء راقية."
+      },
+      {
+        "type": "text",
+        "id": "contact_phone",
+        "label": "رقم الهاتف",
+        "default": "+966 50 000 0000"
+      },
+      {
+        "type": "text",
+        "id": "contact_email",
+        "label": "البريد الإلكتروني",
+        "default": "info@nukhba.sa"
+      },
+      {
+        "type": "text",
+        "id": "contact_address",
+        "label": "العنوان",
+        "default": "الرياض، المملكة العربية السعودية"
+      },
+      {
+        "type": "text",
+        "id": "social_instagram",
+        "label": "رابط إنستغرام",
+        "default": "https://www.instagram.com/yourstore"
+      },
+      {
+        "type": "text",
+        "id": "social_tiktok",
+        "label": "رابط تيك توك",
+        "default": "https://www.tiktok.com/@yourstore"
+      },
+      {
+        "type": "text",
+        "id": "social_twitter",
+        "label": "رابط تويتر/إكس",
+        "default": "https://x.com/yourstore"
+      },
+      {
+        "type": "text",
+        "id": "social_snapchat",
+        "label": "رابط سناب شات",
+        "default": "https://www.snapchat.com/add/yourstore"
+      },
+      {
+        "type": "text",
+        "id": "social_whatsapp",
+        "label": "رقم واتساب (مع كود الدولة)",
+        "default": "966500000000"
+      },
+      {
+        "type": "text",
+        "id": "social_youtube",
+        "label": "رابط يوتيوب",
+        "default": "https://www.youtube.com/@yourstore"
+      }
+    ]
+  }
+]
