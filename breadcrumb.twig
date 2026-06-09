@@ -1,0 +1,15 @@
+<nav class="breadcrumb" aria-label="مسار التنقل">
+  <a href="{{ store.url | default('/') }}">{{ 'nav.home' | t }}</a>
+  <span>›</span>
+  {% for crumb in breadcrumbs | default([]) %}
+    {% if not loop.last %}
+      <a href="{{ crumb.url }}">{{ crumb.name }}</a>
+      <span>›</span>
+    {% else %}
+      <span>{{ crumb.name }}</span>
+    {% endif %}
+  {% endfor %}
+  {% if page.title is defined and breadcrumbs | default([]) | length == 0 %}
+    <span>{{ page.title }}</span>
+  {% endif %}
+</nav>

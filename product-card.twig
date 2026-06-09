@@ -1,0 +1,90 @@
+<div class="card product-card-item"
+  data-product-id="{{ product.id }}"
+  data-filter="{{ product.type | default('') }} {{ product.category.slug | default('') }} {% if product.sale_price %}offer{% endif %}"
+  data-search="{{ product.name }} {{ product.description | striptags }} {{ product.category.name }}"
+  data-name="{{ product.name }}"
+  data-meta="{{ product.description | striptags | slice(0,120) }}"
+  data-price="{{ product.price.amount }}"
+  data-old-price="{% if product.sale_price %}{{ product.regular_price.amount }}{% endif %}"
+  data-image="{{ product.thumbnail | img_url('600x600') }}"
+  data-condition="{{ product.options.condition | default('') }}"
+  data-badge="{{ product.options.inspection | default('') }}"
+  data-warranty="{{ product.options.warranty | default('') }}"
+  data-city="{{ product.options.city | default('') }}"
+  data-delivery="{{ product.options.delivery | default('') }}"
+  data-seller="{{ product.merchant.name | default(store.name) }}"
+  data-check="{{ product.options.inspection_result | default('') }}"
+  data-rating="{{ product.rating.average | default(5) }}"
+  data-reviews="{{ product.rating.count | default(0) }}"
+  data-url="{{ product.url }}"
+>
+
+  {# ── Badges ──────────────────────────────────── #}
+  <div class="badges">
+    {% if product.options.condition %}
+      <span class="badge {{ product.options.type == 'used' ? 'used' : 'new' }}">{{ product.options.condition }}</span>
+    {% elseif product.is_new %}
+      <span class="badge new">{{ 'product.new_badge' | t }}</span>
+    {% else %}
+      <span class="badge used">{{ 'product.used_badge' | t }}</span>
+    {% endif %}
+
+    {% if product.options.inspection %}
+      <span class="badge checked">{{ product.options.inspection }}</span>
+    {% endif %}
+
+    {% if product.sale_price %}
+      <span class="badge sale">{{ 'product.discount' | t }}</span>
+    {% endif %}
+  </div>
+
+  {# ── Image ───────────────────────────────────── #}
+  <div class="card-img-wrap" onclick="openProductModal('{{ product.id }}')">
+    <img
+      src="{{ product.thumbnail | img_url('600x600') }}"
+      alt="{{ product.name }}"
+      loading="lazy"
+    >
+  </div>
+
+  {# ── Title + Meta ────────────────────────────── #}
+  <h3>{{ product.name }}</h3>
+  <p class="meta">{{ product.description | striptags | slice(0,90) }}{% if product.description | striptags | length > 90 %}…{% endif %}</p>
+
+  {# ── Rating ──────────────────────────────────── #}
+  {% if product.rating.average is defined %}
+  <div class="rating">★ {{ product.rating.average }} <span style="color:#aaa">({{ product.rating.count }} {{ 'product.reviews' | t }})</span></div>
+  {% endif %}
+
+  {# ── Info Pills ──────────────────────────────── #}
+  <div class="product-info">
+    {% if product.options.city %}
+      <div class="info-pill"><b>{{ 'product.city' | t }}</b><span>{{ product.options.city }}</span></div>
+    {% endif %}
+    {% if product.options.warranty %}
+      <div class="info-pill"><b>{{ 'product.warranty' | t }}</b><span>{{ product.options.warranty }}</span></div>
+    {% endif %}
+    {% if product.options.delivery %}
+      <div class="info-pill"><b>{{ 'product.delivery' | t }}</b><span>{{ product.options.delivery }}</span></div>
+    {% endif %}
+    <div class="info-pill"><b>{{ 'product.seller' | t }}</b><span>{{ product.merchant.name | default(store.name) }}</span></div>
+  </div>
+
+  {# ── Price ───────────────────────────────────── #}
+  <p class="price">
+    {{ product.price.formatted }}
+    {% if product.sale_price %}
+      <span class="old">{{ product.regular_price.formatted }}</span>
+    {% endif %}
+  </p>
+
+  {# ── Actions ─────────────────────────────────── #}
+  <div class="actions">
+    <salla-wishlist-btn class="heart" product-id="{{ product.id }}" aria-label="{{ 'product.add_to_wishlist' | t }}">♡</salla-wishlist-btn>
+    <button class="compare" onclick="openProductModal('{{ product.id }}')" aria-label="{{ 'product.add_to_compare' | t }}">⇄</button>
+    <salla-add-to-cart class="cart" product-id="{{ product.id }}">{{ 'product.add_to_cart' | t }}</salla-add-to-cart>
+  </div>
+
+  <a class="details details-full" href="{{ product.url }}">{{ 'product.view_details' | t }}</a>
+
+</div>
