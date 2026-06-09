@@ -1,0 +1,81 @@
+{
+  "general": {
+    "currency": "SAR",
+    "search_placeholder": "Search for iPhone, watch, car, real estate, laptop...",
+    "search_no_results": "No matching results",
+    "loading": "Loading...",
+    "show_all": "Show All",
+    "back": "Back",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel"
+  },
+  "header": {
+    "cart": "Cart",
+    "wishlist": "Wishlist",
+    "compare": "Compare",
+    "account": "My Account",
+    "sell_btn": "Sell Your Product",
+    "brand_tagline": "Luxury Saudi Marketplace",
+    "brand_desc": "A premium Saudi platform for new and guaranteed used products."
+  },
+  "nav": {
+    "home": "Home",
+    "new": "New",
+    "used": "Certified Used",
+    "electronics": "Electronics",
+    "cars": "Cars",
+    "realestate": "Real Estate",
+    "watches": "Watches",
+    "fashion": "Fashion"
+  },
+  "product": {
+    "add_to_cart": "Add to Cart",
+    "view_details": "View Details",
+    "add_to_wishlist": "Save to Wishlist",
+    "add_to_compare": "Add to Compare",
+    "buy_now": "Buy Now",
+    "city": "City",
+    "warranty": "Warranty",
+    "delivery": "Delivery",
+    "seller": "Seller",
+    "condition": "Condition",
+    "inspection": "Inspection",
+    "inspection_result": "Inspection Result",
+    "out_of_stock": "Out of Stock",
+    "in_stock": "In Stock",
+    "price": "Price",
+    "original_price": "Original Price",
+    "discount": "Discount",
+    "quantity": "Quantity",
+    "related_products": "Related Products"
+  },
+  "cart": {
+    "title": "Shopping Cart",
+    "empty": "Your cart is empty",
+    "empty_desc": "You haven't added any products yet",
+    "continue_shopping": "Continue Shopping",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Checkout",
+    "remove": "Remove",
+    "free_shipping": "Free Shipping"
+  },
+  "footer": {
+    "important_links": "Important Links",
+    "customer_service": "Customer Service",
+    "contact_us": "Contact Us",
+    "about": "About Us",
+    "faq": "FAQ",
+    "returns": "Returns & Exchanges",
+    "terms": "Terms & Conditions",
+    "privacy": "Privacy Policy",
+    "rights": "All Rights Reserved"
+  },
+  "404": {
+    "title": "Page Not Found",
+    "message": "Sorry, the page you are looking for does not exist.",
+    "back_home": "Back to Home"
+  }
+}

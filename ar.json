@@ -1,0 +1,156 @@
+{
+  "general": {
+    "currency": "ريال",
+    "search_placeholder": "ابحث عن آيفون، ساعة، سيارة، عقار، لابتوب...",
+    "search_no_results": "لا توجد نتائج مطابقة",
+    "loading": "جارٍ التحميل...",
+    "show_all": "عرض الكل",
+    "back": "رجوع",
+    "close": "إغلاق",
+    "save": "حفظ",
+    "cancel": "إلغاء"
+  },
+  "header": {
+    "cart": "السلة",
+    "wishlist": "المفضلة",
+    "compare": "مقارنة",
+    "account": "حسابي",
+    "sell_btn": "بيع منتجك الآن",
+    "brand_tagline": "Luxury Saudi Marketplace",
+    "brand_desc": "منصة سعودية فاخرة تجمع الجديد والمستعمل المضمون، بفحص واضح وتسعير ذكي وتجربة شراء راقية."
+  },
+  "nav": {
+    "home": "الرئيسية",
+    "new": "جديد",
+    "used": "مستعمل مضمون",
+    "electronics": "الإلكترونيات",
+    "cars": "السيارات",
+    "realestate": "العقارات",
+    "watches": "الساعات",
+    "fashion": "الأزياء"
+  },
+  "trust": {
+    "inspection_title": "فحص قبل البيع",
+    "inspection_sub": "للمنتجات المستعملة",
+    "warranty_title": "ضمان واضح",
+    "warranty_sub": "حسب حالة المنتج",
+    "pricing_title": "تسعير ذكي",
+    "pricing_sub": "جديد، شبه جديد، مستعمل",
+    "returns_title": "استرجاع آمن",
+    "returns_sub": "عند اختلاف الوصف"
+  },
+  "categories": {
+    "electronics": "إلكترونيات",
+    "watches": "ساعات",
+    "cars": "سيارات",
+    "realestate": "عقارات",
+    "fashion": "أزياء",
+    "home": "منزل ومطبخ"
+  },
+  "sell": {
+    "step1": "صوّر المنتج",
+    "step2": "حدد الحالة",
+    "step3": "استلم عرض السعر",
+    "start_btn": "ابدأ بيع منتجك"
+  },
+  "filters": {
+    "all": "الكل",
+    "new": "جديد",
+    "used": "مستعمل مضمون",
+    "electronics": "إلكترونيات",
+    "offer": "عروض"
+  },
+  "product": {
+    "add_to_cart": "أضف للسلة",
+    "view_details": "عرض التفاصيل",
+    "add_to_wishlist": "حفظ في المفضلة",
+    "add_to_compare": "إضافة للمقارنة",
+    "remove_from_wishlist": "إزالة من المفضلة",
+    "buy_now": "اشترِ الآن",
+    "city": "المدينة",
+    "warranty": "الضمان",
+    "delivery": "التوصيل",
+    "seller": "البائع",
+    "condition": "الحالة",
+    "inspection": "الفحص",
+    "inspection_result": "نتيجة الفحص",
+    "rating": "تقييم",
+    "reviews": "تقييم",
+    "out_of_stock": "غير متوفر",
+    "in_stock": "متوفر",
+    "price": "السعر",
+    "original_price": "السعر الأصلي",
+    "discount": "خصم",
+    "share": "مشاركة",
+    "quantity": "الكمية",
+    "related_products": "منتجات ذات صلة",
+    "inspected": "مفحوص",
+    "guaranteed": "مضمون",
+    "new_badge": "جديد",
+    "used_badge": "مستعمل"
+  },
+  "cart": {
+    "title": "سلة التسوق",
+    "empty": "سلتك فارغة",
+    "empty_desc": "لم تضف أي منتجات بعد",
+    "continue_shopping": "متابعة التسوق",
+    "subtotal": "المجموع الفرعي",
+    "shipping": "الشحن",
+    "total": "الإجمالي",
+    "checkout": "إتمام الطلب",
+    "remove": "حذف",
+    "quantity": "الكمية",
+    "free_shipping": "شحن مجاني",
+    "free_shipping_note": "توصيل مجاني للطلبات فوق 500 ريال"
+  },
+  "wishlist": {
+    "title": "المفضلة",
+    "empty": "قائمة المفضلة فارغة",
+    "empty_desc": "احفظ المنتجات التي تعجبك هنا"
+  },
+  "compare": {
+    "title": "مقارنة المنتجات",
+    "empty": "لم تضف منتجات للمقارنة",
+    "empty_desc": "أضف حتى 4 منتجات للمقارنة بينها"
+  },
+  "account": {
+    "title": "حسابي",
+    "login": "تسجيل الدخول",
+    "register": "إنشاء حساب",
+    "logout": "تسجيل الخروج",
+    "orders": "طلباتي",
+    "profile": "الملف الشخصي",
+    "addresses": "العناوين"
+  },
+  "footer": {
+    "important_links": "روابط مهمة",
+    "customer_service": "خدمة العملاء",
+    "contact_us": "تواصل معنا",
+    "about": "من نحن",
+    "contact": "تواصل معنا",
+    "sell": "بيع منتجك",
+    "faq": "الأسئلة الشائعة",
+    "returns": "الاسترجاع والاستبدال",
+    "terms": "الشروط والأحكام",
+    "privacy": "سياسة الخصوصية",
+    "whatsapp_support": "دعم واتساب مباشر",
+    "rights": "جميع الحقوق محفوظة"
+  },
+  "toast": {
+    "added_to_cart": "تمت إضافة المنتج إلى السلة",
+    "added_to_wishlist": "تم حفظ المنتج في المفضلة",
+    "added_to_compare": "تمت إضافة المنتج للمقارنة",
+    "removed_from_wishlist": "تمت الإزالة من المفضلة"
+  },
+  "search": {
+    "title": "نتائج البحث",
+    "results_for": "نتائج البحث عن",
+    "no_results": "لا توجد نتائج لـ",
+    "no_results_desc": "جرّب كلمات بحث مختلفة"
+  },
+  "404": {
+    "title": "الصفحة غير موجودة",
+    "message": "عذراً، الصفحة التي تبحث عنها غير موجودة.",
+    "back_home": "العودة للرئيسية"
+  }
+}
