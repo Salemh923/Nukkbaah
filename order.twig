@@ -1,0 +1,75 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}طلب رقم #{{ order.id }} | {{ store.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {% include 'snippets/breadcrumb.twig' with {
+    'breadcrumbs': [
+      { 'name': 'account.title' | t, 'url': customer.urls.account | default('/account') },
+      { 'name': 'account.orders' | t, 'url': customer.urls.orders | default('/account/orders') },
+      { 'name': 'طلب #' ~ order.id, 'url': '#' }
+    ]
+  } %}
+
+  <div class="page-header" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+    <h1>طلب رقم #{{ order.id }}</h1>
+    <span class="order-status {{ order.status }}">{{ order.status_label }}</span>
+  </div>
+
+  <div style="display:grid;grid-template-columns:1fr 360px;gap:28px;margin-top:28px;">
+
+    {# ── Order Items ─────────────────────────────── #}
+    <div>
+      <h3 style="color:var(--gold2);margin-top:0;">المنتجات المطلوبة</h3>
+
+      {% for item in order.items %}
+        <div class="cart-item" style="margin-bottom:14px;">
+          <img src="{{ item.product.thumbnail | img_url('200x200') }}" alt="{{ item.product.name }}" loading="lazy">
+          <div>
+            <h3 style="font-size:17px;margin:0 0 5px;">{{ item.product.name }}</h3>
+            <p style="color:#aaa;font-size:13px;margin:0 0 8px;">{{ item.product.description | striptags | slice(0,80) }}</p>
+            <p style="color:#888;font-size:13px;margin:0;">الكمية: {{ item.quantity }}</p>
+          </div>
+          <div style="text-align:left;">
+            <p class="price" style="font-size:19px;margin:0;">{{ item.total.formatted }}</p>
+            <p style="color:#888;font-size:13px;margin:4px 0 0;">{{ item.price.formatted }} / وحدة</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    {# ── Order Summary ───────────────────────────── #}
+    <div class="cart-summary">
+      <h3>ملخص الطلب</h3>
+
+      <div class="summary-row"><span>{{ 'cart.subtotal' | t }}</span><span>{{ order.subtotal.formatted }}</span></div>
+      <div class="summary-row"><span>{{ 'cart.shipping' | t }}</span><span>{{ order.shipping_cost.formatted }}</span></div>
+      {% if order.discount.amount > 0 %}
+        <div class="summary-row"><span>الخصم</span><span style="color:var(--green);">- {{ order.discount.formatted }}</span></div>
+      {% endif %}
+      <div class="summary-row total"><span>{{ 'cart.total' | t }}</span><span>{{ order.total.formatted }}</span></div>
+
+      <div style="margin-top:18px;padding-top:18px;border-top:1px solid #ffffff12;">
+        <h4 style="color:var(--gold2);margin:0 0 12px;">عنوان التوصيل</h4>
+        {% if order.shipping_address %}
+          <p style="color:#ccc;line-height:1.8;margin:0;">
+            {{ order.shipping_address.name }}<br>
+            {{ order.shipping_address.street }}<br>
+            {{ order.shipping_address.city }}, {{ order.shipping_address.country }}<br>
+            {{ order.shipping_address.mobile }}
+          </p>
+        {% endif %}
+      </div>
+
+      <div style="margin-top:14px;padding-top:14px;border-top:1px solid #ffffff12;">
+        <h4 style="color:var(--gold2);margin:0 0 8px;">طريقة الدفع</h4>
+        <p style="color:#ccc;margin:0;">{{ order.payment_method | default('—') }}</p>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+{% endblock %}

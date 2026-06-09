@@ -1,0 +1,146 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ product.name }} | {{ store.name }}{% endblock %}
+{% block meta_description %}{{ product.description | striptags | slice(0,160) }}{% endblock %}
+{% block og_title %}{{ product.name }}{% endblock %}
+{% block og_image %}{{ product.thumbnail | img_url('800x800') }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {% include 'snippets/breadcrumb.twig' with {
+    'breadcrumbs': [
+      { 'name': product.category.name, 'url': product.category.url },
+      { 'name': product.name, 'url': product.url }
+    ]
+  } %}
+
+  <div class="product-page">
+
+    {# ── Gallery ─────────────────────────────────── #}
+    <div class="product-gallery">
+      <img
+        class="product-main-img"
+        id="mainProductImg"
+        src="{{ product.thumbnail | img_url('800x800') }}"
+        alt="{{ product.name }}"
+      >
+
+      {% if product.images is defined and product.images | length > 1 %}
+        <div class="product-thumbs">
+          {% for img in product.images %}
+            <img
+              class="product-thumb {% if loop.first %}active{% endif %}"
+              src="{{ img.url | img_url('200x200') }}"
+              alt="{{ product.name }}"
+              loading="lazy"
+            >
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+
+    {# ── Product Info ────────────────────────────── #}
+    <div class="product-info-page">
+
+      {# Badges #}
+      <div class="badges" style="position:static;margin-bottom:14px;">
+        {% if product.options.condition %}
+          <span class="badge {{ product.options.type == 'used' ? 'used' : 'new' }}">{{ product.options.condition }}</span>
+        {% endif %}
+        {% if product.options.inspection %}
+          <span class="badge checked">{{ product.options.inspection }}</span>
+        {% endif %}
+        {% if product.sale_price %}
+          <span class="badge sale">{{ 'product.discount' | t }}</span>
+        {% endif %}
+      </div>
+
+      <h1>{{ product.name }}</h1>
+
+      {# Rating #}
+      {% if product.rating.average is defined %}
+        <div class="rating" style="margin-bottom:14px;">
+          ★ {{ product.rating.average }} <span style="color:#aaa">({{ product.rating.count }} {{ 'product.reviews' | t }})</span>
+        </div>
+      {% endif %}
+
+      {# Description #}
+      <p style="color:#ccc;line-height:1.8;margin-bottom:18px;">{{ product.description | striptags }}</p>
+
+      {# Specs Grid #}
+      <div class="product-specs-grid">
+        {% if product.options.condition %}
+          <div class="spec"><b>{{ 'product.condition' | t }}</b>{{ product.options.condition }}</div>
+        {% endif %}
+        {% if product.options.inspection %}
+          <div class="spec"><b>{{ 'product.inspection' | t }}</b>{{ product.options.inspection }}</div>
+        {% endif %}
+        {% if product.options.warranty %}
+          <div class="spec"><b>{{ 'product.warranty' | t }}</b>{{ product.options.warranty }}</div>
+        {% endif %}
+        {% if product.options.city %}
+          <div class="spec"><b>{{ 'product.city' | t }}</b>{{ product.options.city }}</div>
+        {% endif %}
+        {% if product.options.delivery %}
+          <div class="spec"><b>{{ 'product.delivery' | t }}</b>{{ product.options.delivery }}</div>
+        {% endif %}
+        <div class="spec"><b>{{ 'product.seller' | t }}</b>{{ product.merchant.name | default(store.name) }}</div>
+      </div>
+
+      {# Inspection Result #}
+      {% if product.options.inspection_result %}
+        <div style="background:#ffffff0d;border:1px solid #d8a64b33;border-radius:14px;padding:14px 16px;margin-bottom:18px;">
+          <b style="color:var(--gold2);display:block;margin-bottom:6px;">{{ 'product.inspection_result' | t }}:</b>
+          <p style="color:#ccc;margin:0;line-height:1.7;">{{ product.options.inspection_result }}</p>
+        </div>
+      {% endif %}
+
+      {# Price #}
+      <p class="price">
+        {{ product.price.formatted }}
+        {% if product.sale_price %}
+          <span class="old">{{ product.regular_price.formatted }}</span>
+        {% endif %}
+      </p>
+
+      {# Quantity #}
+      {% if product.is_available %}
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:18px;">
+          <span style="color:#aaa;">{{ 'product.quantity' | t }}:</span>
+          <div style="display:flex;align-items:center;gap:8px;background:#0b1115;border:1px solid #ffffff22;border-radius:12px;padding:4px 8px;">
+            <button class="qty-minus" style="width:32px;height:32px;background:none;border:none;color:var(--gold2);font-size:20px;cursor:pointer;">−</button>
+            <input class="qty-input" type="number" value="1" min="1" max="{{ product.quantity }}" style="width:40px;text-align:center;background:none;border:none;color:#fff;font-size:16px;font-family:Tajawal,sans-serif;">
+            <button class="qty-plus" style="width:32px;height:32px;background:none;border:none;color:var(--gold2);font-size:20px;cursor:pointer;">+</button>
+          </div>
+        </div>
+      {% endif %}
+
+      {# CTA Buttons #}
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        {% if product.is_available %}
+          <salla-add-to-cart class="btn" style="flex:1;" product-id="{{ product.id }}">{{ 'product.add_to_cart' | t }}</salla-add-to-cart>
+          <salla-add-to-cart class="btn secondary" product-id="{{ product.id }}" buy-now="true">{{ 'product.buy_now' | t }}</salla-add-to-cart>
+        {% else %}
+          <button class="btn secondary" disabled style="opacity:.5;cursor:not-allowed;flex:1;">{{ 'product.out_of_stock' | t }}</button>
+        {% endif %}
+        <salla-wishlist-btn class="heart" product-id="{{ product.id }}" style="flex:0 0 auto;width:48px;" aria-label="{{ 'product.add_to_wishlist' | t }}">♡</salla-wishlist-btn>
+      </div>
+
+    </div>
+  </div>
+
+  {# ── Related Products ─────────────────────────── #}
+  {% if related_products is defined and related_products | length > 0 %}
+    <div class="section-head" style="margin-top:48px;">
+      <h2>{{ 'product.related_products' | t }}</h2>
+    </div>
+    <div class="products" style="margin-top:20px;">
+      {% for rel in related_products | slice(0, 5) %}
+        {% include 'snippets/product-card.twig' with { 'product': rel } %}
+      {% endfor %}
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

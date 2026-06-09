@@ -1,0 +1,14 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ '404.title' | t }} | {{ store.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+  <div class="page-404">
+    <h1>404</h1>
+    <h2>{{ '404.title' | t }}</h2>
+    <p>{{ '404.message' | t }}</p>
+    <a href="{{ store.url | default('/') }}" class="btn" style="display:inline-block;margin-top:20px;">{{ '404.back_home' | t }}</a>
+  </div>
+</div>
+{% endblock %}

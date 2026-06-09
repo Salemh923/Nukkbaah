@@ -1,0 +1,64 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ 'account.orders' | t }} | {{ store.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {% include 'snippets/breadcrumb.twig' with {
+    'breadcrumbs': [
+      { 'name': 'account.title' | t, 'url': customer.urls.account | default('/account') },
+      { 'name': 'account.orders' | t, 'url': '#' }
+    ]
+  } %}
+
+  <div class="page-header">
+    <h1>{{ 'account.orders' | t }}</h1>
+  </div>
+
+  {% if orders is defined and orders | length > 0 %}
+
+    {% for order in orders %}
+      <div class="order-card">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:14px;">
+          <div>
+            <b style="color:var(--gold2);font-size:17px;">طلب رقم #{{ order.id }}</b>
+            <p style="color:#888;font-size:13px;margin:4px 0 0;">{{ order.created_at | date('d/m/Y') }}</p>
+          </div>
+          <span class="order-status {{ order.status }}">{{ order.status_label }}</span>
+        </div>
+
+        <div style="display:flex;gap:12px;overflow-x:auto;padding-bottom:8px;margin-bottom:14px;">
+          {% for item in order.items | slice(0, 4) %}
+            <div style="flex:0 0 auto;text-align:center;">
+              <img src="{{ item.product.thumbnail | img_url('100x100') }}" alt="{{ item.product.name }}" style="width:72px;height:72px;border-radius:10px;object-fit:contain;background:#111820;padding:6px;" loading="lazy">
+              <p style="font-size:11px;color:#aaa;margin:4px 0 0;max-width:80px;">{{ item.product.name | slice(0,22) }}{% if item.product.name | length > 22 %}…{% endif %}</p>
+            </div>
+          {% endfor %}
+          {% if order.items | length > 4 %}
+            <div style="flex:0 0 auto;width:72px;height:72px;border-radius:10px;background:#111820;display:flex;align-items:center;justify-content:center;color:#888;font-size:13px;">
+              +{{ order.items | length - 4 }}
+            </div>
+          {% endif %}
+        </div>
+
+        <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+          <p style="margin:0;"><b style="color:var(--gold2);">{{ 'cart.total' | t }}:</b> {{ order.total.formatted }}</p>
+          <a href="{{ order.url }}" class="btn dark" style="padding:10px 20px;font-size:14px;">تفاصيل الطلب</a>
+        </div>
+      </div>
+    {% endfor %}
+
+  {% else %}
+    <div class="empty-state">
+      <svg viewBox="0 0 24 24" stroke-width="1.5">
+        <rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10h8M8 14h5"/>
+      </svg>
+      <h3>لا توجد طلبات بعد</h3>
+      <p>لم تقم بأي طلب حتى الآن</p>
+      <a href="{{ store.url | default('/') }}" class="btn" style="display:inline-block;margin-top:16px;">تسوّق الآن</a>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

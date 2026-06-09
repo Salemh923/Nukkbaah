@@ -1,0 +1,105 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ 'cart.title' | t }} | {{ store.name }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {% include 'snippets/breadcrumb.twig' with {
+    'breadcrumbs': [{ 'name': 'cart.title' | t, 'url': '#' }]
+  } %}
+
+  <div class="page-header">
+    <h1>{{ 'cart.title' | t }}</h1>
+  </div>
+
+  {% if cart.count > 0 %}
+
+    <div class="cart-page">
+
+      {# ── Cart Items ────────────────────────────── #}
+      <div class="cart-items">
+        {% for item in cart.items %}
+          <div class="cart-item">
+            <img src="{{ item.product.thumbnail | img_url('200x200') }}" alt="{{ item.product.name }}" loading="lazy">
+
+            <div>
+              <h3 style="font-size:18px;margin:0 0 6px;">{{ item.product.name }}</h3>
+              <p style="color:#aaa;font-size:13px;margin:0 0 8px;">{{ item.product.description | striptags | slice(0,80) }}</p>
+
+              {# Quantity Controls #}
+              <div style="display:flex;align-items:center;gap:10px;margin-top:10px;">
+                <span style="color:#888;font-size:13px;">{{ 'cart.quantity' | t }}:</span>
+                <salla-quantity-input product-id="{{ item.product.id }}" value="{{ item.quantity }}"></salla-quantity-input>
+              </div>
+            </div>
+
+            <div style="text-align:left;display:flex;flex-direction:column;justify-content:space-between;min-width:110px;">
+              <p class="price" style="font-size:20px;margin:0;">{{ item.total.formatted }}</p>
+              <salla-remove-from-cart class="btn dark" product-id="{{ item.product.id }}" style="font-size:13px;padding:8px 14px;margin-top:12px;">{{ 'cart.remove' | t }}</salla-remove-from-cart>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+
+      {# ── Cart Summary ──────────────────────────── #}
+      <div class="cart-summary">
+        <h3>ملخص الطلب</h3>
+
+        <div class="summary-row">
+          <span>{{ 'cart.subtotal' | t }}</span>
+          <span>{{ cart.subtotal.formatted }}</span>
+        </div>
+
+        <div class="summary-row">
+          <span>{{ 'cart.shipping' | t }}</span>
+          <span>
+            {% if cart.shipping_cost.amount == 0 %}
+              <span style="color:var(--green);">{{ 'cart.free_shipping' | t }}</span>
+            {% else %}
+              {{ cart.shipping_cost.formatted }}
+            {% endif %}
+          </span>
+        </div>
+
+        {% if cart.discount.amount > 0 %}
+          <div class="summary-row">
+            <span>الخصم</span>
+            <span style="color:var(--green);">- {{ cart.discount.formatted }}</span>
+          </div>
+        {% endif %}
+
+        <div class="summary-row total">
+          <span>{{ 'cart.total' | t }}</span>
+          <span>{{ cart.total.formatted }}</span>
+        </div>
+
+        <p style="font-size:12px;color:#777;margin-bottom:18px;">{{ 'cart.free_shipping_note' | t }}</p>
+
+        {# Coupon #}
+        <div style="display:flex;gap:8px;margin-bottom:18px;">
+          <input type="text" placeholder="كود الخصم" class="form-input" style="flex:1;height:44px;">
+          <button class="btn dark" style="padding:0 18px;height:44px;">تطبيق</button>
+        </div>
+
+        <salla-checkout class="btn" style="width:100%;display:block;text-align:center;padding:16px;">{{ 'cart.checkout' | t }}</salla-checkout>
+        <a href="{{ store.url | default('/') }}" class="btn secondary" style="width:100%;display:block;text-align:center;margin-top:10px;padding:14px;">{{ 'cart.continue_shopping' | t }}</a>
+      </div>
+
+    </div>
+
+  {% else %}
+
+    <div class="empty-state">
+      <svg viewBox="0 0 24 24" stroke-width="1.5">
+        <path d="M6 6h15l-2 9H8L6 6z"/><path d="M6 6 5 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/>
+      </svg>
+      <h3>{{ 'cart.empty' | t }}</h3>
+      <p>{{ 'cart.empty_desc' | t }}</p>
+      <a href="{{ store.url | default('/') }}" class="btn" style="display:inline-block;margin-top:16px;">{{ 'cart.continue_shopping' | t }}</a>
+    </div>
+
+  {% endif %}
+
+</div>
+{% endblock %}

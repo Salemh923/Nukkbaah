@@ -1,0 +1,30 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ store.name }} | {{ settings.store_tagline | default('جديد ومستعمل مضمون') }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {# ── Hero ──────────────────────────────────────── #}
+  {% include 'sections/hero.twig' %}
+
+  {# ── Trust Badges ──────────────────────────────── #}
+  {% include 'sections/trust-badges.twig' %}
+
+  {# ── Categories Grid ───────────────────────────── #}
+  {% include 'sections/categories-grid.twig' %}
+
+  {# ── Sell Panel ────────────────────────────────── #}
+  {% include 'sections/sell-panel.twig' %}
+
+  {# ── Wide Ad ───────────────────────────────────── #}
+  {% include 'sections/wide-ad.twig' %}
+
+  {# ── Featured Products ─────────────────────────── #}
+  {% include 'sections/featured-products.twig' %}
+
+  {# ── Premium Feature Boxes ─────────────────────── #}
+  {% include 'sections/premium-boxes.twig' %}
+
+</div>
+{% endblock %}

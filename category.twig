@@ -1,0 +1,68 @@
+{% extends 'layout/theme.twig' %}
+
+{% block title %}{{ category.name | default('المنتجات') }} | {{ store.name }}{% endblock %}
+{% block meta_description %}{{ category.description | striptags | slice(0,160) | default(store.description) }}{% endblock %}
+
+{% block content %}
+<div class="container">
+
+  {% include 'snippets/breadcrumb.twig' with {
+    'breadcrumbs': [
+      { 'name': category.name | default('المنتجات'), 'url': category.url | default('#') }
+    ]
+  } %}
+
+  <div class="section-head">
+    <h2>{{ category.name | default('جميع المنتجات') }}</h2>
+    {% if category.products_count is defined %}
+      <span style="color:#888;font-size:14px;">{{ category.products_count }} منتج</span>
+    {% endif %}
+  </div>
+
+  {% if category.description %}
+    <p style="color:#aaa;margin-top:10px;line-height:1.8;">{{ category.description | striptags }}</p>
+  {% endif %}
+
+  {# ── Filters ───────────────────────────────────── #}
+  <div class="filters">
+    <button class="filter-btn active" data-filter="all">{{ 'filters.all' | t }}</button>
+    <button class="filter-btn" data-filter="new">{{ 'filters.new' | t }}</button>
+    <button class="filter-btn" data-filter="used">{{ 'filters.used' | t }}</button>
+    <button class="filter-btn" data-filter="offer">{{ 'filters.offer' | t }}</button>
+  </div>
+
+  {# ── Products ──────────────────────────────────── #}
+  <section class="products" id="products" style="margin-top:24px;">
+    {% if products is defined and products | length > 0 %}
+      {% for product in products %}
+        {% include 'snippets/product-card.twig' with { 'product': product } %}
+      {% endfor %}
+    {% else %}
+      <div style="grid-column:1/-1;text-align:center;padding:60px 20px;">
+        <div class="empty-state">
+          <svg viewBox="0 0 24 24" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+          <h3>{{ 'general.search_no_results' | t }}</h3>
+          <p>لا توجد منتجات في هذا القسم حالياً</p>
+          <a href="{{ store.url | default('/') }}" class="btn" style="display:inline-block;margin-top:16px;">{{ 'nav.home' | t }}</a>
+        </div>
+      </div>
+    {% endif %}
+  </section>
+
+  {# ── Pagination ────────────────────────────────── #}
+  {% if pagination is defined and pagination.total_pages > 1 %}
+    <div class="pagination">
+      {% if pagination.current_page > 1 %}
+        <a class="page-num" href="{{ pagination.prev_url }}">‹</a>
+      {% endif %}
+      {% for i in 1..pagination.total_pages %}
+        <a class="page-num {% if i == pagination.current_page %}active{% endif %}" href="{{ pagination.page_url(i) }}">{{ i }}</a>
+      {% endfor %}
+      {% if pagination.current_page < pagination.total_pages %}
+        <a class="page-num" href="{{ pagination.next_url }}">›</a>
+      {% endif %}
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}
