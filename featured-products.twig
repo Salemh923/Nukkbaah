@@ -1,0 +1,30 @@
+<div class="section-head">
+  <h2>مختارات النخبة</h2>
+  <a href="{{ store.urls.products | default('/products') }}">{{ 'general.show_all' | t }} ‹</a>
+</div>
+
+<div class="filters">
+  <button class="filter-btn active" data-filter="all">{{ 'filters.all' | t }}</button>
+  <button class="filter-btn" data-filter="new">{{ 'filters.new' | t }}</button>
+  <button class="filter-btn" data-filter="used">{{ 'filters.used' | t }}</button>
+  <button class="filter-btn" data-filter="electronics">{{ 'filters.electronics' | t }}</button>
+  <button class="filter-btn" data-filter="offer">{{ 'filters.offer' | t }}</button>
+</div>
+
+<section class="products" id="products">
+
+  {% if products is defined and products | length > 0 %}
+
+    {% for product in products %}
+      {% include 'snippets/product-card.twig' with { 'product': product } %}
+    {% endfor %}
+
+  {% else %}
+
+    <div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#aaa">
+      {{ 'general.search_no_results' | t }}
+    </div>
+
+  {% endif %}
+
+</section>

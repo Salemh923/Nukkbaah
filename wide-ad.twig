@@ -1,0 +1,7 @@
+<div class="wide-ad" {% if settings.wide_ad_image %}style="background-image:linear-gradient(90deg,#000 0 40%,#0008 70%,transparent),url('{{ settings.wide_ad_image | img_url }}');background-size:cover;background-position:center;"{% endif %}>
+  <div>
+    <h2>{{ settings.wide_ad_title | default('المستعمل صار') }} <span>{{ settings.wide_ad_title_highlight | default('أكثر ثقة') }}</span></h2>
+    <p>{{ settings.wide_ad_text | default('كل منتج مستعمل يظهر بحالته، درجة نظافته، نتيجة الفحص، ومدة الضمان قبل الشراء.') }}</p>
+    <a href="{{ store.urls.category | default('/category') }}?cat=used" class="btn">{{ settings.wide_ad_btn | default('تصفح المستعمل المضمون') }}</a>
+  </div>
+</div>

@@ -1,0 +1,102 @@
+<footer class="footer">
+  <div class="container footer-grid">
+
+    {# ── Column 1: Brand + Payment + Social ──────── #}
+    <div>
+      <h3>{{ store.name }}</h3>
+      <p>{{ settings.footer_about | default(store.description) }}</p>
+
+      <div class="payment-icons">
+        <span class="pay-card mada">mada</span>
+        <span class="pay-card visa">VISA</span>
+        <span class="pay-card master">Mastercard</span>
+        <span class="pay-card apple"> Pay</span>
+        <span class="pay-card stc">STC Pay</span>
+        <span class="pay-card cash">الدفع عند الاستلام</span>
+        <span class="pay-card bank">حوالة بنكية</span>
+      </div>
+
+      <div class="social-icons">
+        {% if settings.social_instagram %}
+        <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5Zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7Zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5Zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5ZM17.8 6.6a1.1 1.1 0 1 1-1.1 1.1 1.1 1.1 0 0 1 1.1-1.1Z"/></svg>
+        </a>
+        {% endif %}
+
+        {% if settings.social_tiktok %}
+        <a href="{{ settings.social_tiktok }}" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <svg viewBox="0 0 24 24"><path d="M16 2c.4 3 2.2 4.8 5 5v4c-1.9-.1-3.5-.7-5-1.8V16a6 6 0 1 1-6-6c.4 0 .7 0 1 .1v4.1a2.2 2.2 0 1 0 1.7 2.1V2h3.3Z"/></svg>
+        </a>
+        {% endif %}
+
+        {% if settings.social_twitter %}
+        <a href="{{ settings.social_twitter }}" target="_blank" rel="noopener noreferrer" aria-label="X / Twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.9 2H22l-6.8 7.8L23 22h-6.1l-4.8-6.3L6.6 22H3.5l7.3-8.4L3.3 2h6.3l4.3 5.7L18.9 2Zm-1.1 17.9h1.7L8.7 4H6.8l11 15.9Z"/></svg>
+        </a>
+        {% endif %}
+
+        {% if settings.social_snapchat %}
+        <a href="{{ settings.social_snapchat }}" target="_blank" rel="noopener noreferrer" aria-label="Snapchat">
+          <svg viewBox="0 0 24 24"><path d="M12 2c3.4 0 5.5 2.4 5.5 5.8v2.1c0 .5.4.8.9.6l1-.4c.7-.2 1.4.3 1.2 1-.2.8-1.1 1.4-2.3 1.8.4 1.5 1.5 2.7 3.2 3.4.5.2.5.9 0 1.1-1.2.5-2.1.6-2.8.6-.4.7-.9 1.2-1.6 1.2-.6 0-1.1-.3-1.8-.3-.9 0-1.7.8-3.3.8s-2.4-.8-3.3-.8c-.7 0-1.2.3-1.8.3-.7 0-1.2-.5-1.6-1.2-.7 0-1.6-.1-2.8-.6-.5-.2-.5-.9 0-1.1 1.7-.7 2.8-1.9 3.2-3.4-1.2-.4-2.1-1-2.3-1.8-.2-.7.5-1.2 1.2-1l1 .4c.5.2.9-.1.9-.6V7.8C6.5 4.4 8.6 2 12 2Z"/></svg>
+        </a>
+        {% endif %}
+
+        {% if settings.social_whatsapp %}
+        <a href="https://wa.me/{{ settings.social_whatsapp }}" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24"><path d="M20.5 3.5A11.8 11.8 0 0 0 2.7 18.2L2 22l3.9-1a11.7 11.7 0 0 0 5.7 1.5h.1A11.8 11.8 0 0 0 20.5 3.5ZM12 20.4a9.4 9.4 0 0 1-4.8-1.3l-.3-.2-2.3.6.6-2.2-.2-.3A9.6 9.6 0 1 1 12 20.4Zm5.3-7.1c-.3-.2-1.7-.9-2-.9s-.5-.1-.7.2-.8.9-.9 1.1-.3.2-.6.1a7.9 7.9 0 0 1-2.3-1.4 8.8 8.8 0 0 1-1.6-2c-.2-.3 0-.5.1-.6l.5-.6c.1-.2.2-.3.3-.5a.5.5 0 0 0 0-.5c-.1-.2-.7-1.6-.9-2.2s-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7c0 1.6 1.2 3.2 1.4 3.4s2.4 3.7 5.9 5.2c.8.3 1.5.5 2 .7a4.7 4.7 0 0 0 2.2.1 3.2 3.2 0 0 0 2.1-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.1-.3-.2-.6-.4Z"/></svg>
+        </a>
+        {% endif %}
+
+        {% if settings.social_youtube %}
+        <a href="{{ settings.social_youtube }}" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <svg viewBox="0 0 24 24"><path d="M23 7.2a3 3 0 0 0-2.1-2.1C19 4.6 12 4.6 12 4.6s-7 0-8.9.5A3 3 0 0 0 1 7.2 31.2 31.2 0 0 0 .5 12a31.2 31.2 0 0 0 .5 4.8 3 3 0 0 0 2.1 2.1c1.9.5 8.9.5 8.9.5s7 0 8.9-.5a3 3 0 0 0 2.1-2.1 31.2 31.2 0 0 0 .5-4.8 31.2 31.2 0 0 0-.5-4.8ZM9.8 15.5v-7l6.1 3.5-6.1 3.5Z"/></svg>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+
+    {# ── Column 2: Important Links ────────────────── #}
+    <div>
+      <h4>{{ 'footer.important_links' | t }}</h4>
+      <a href="{{ store.urls.about | default('/about') }}">{{ 'footer.about' | t }}</a>
+      <a href="{{ store.urls.contact | default('/contact') }}">{{ 'footer.contact' | t }}</a>
+      <a href="{{ store.urls.sell | default('/sell') }}">{{ 'footer.sell' | t }}</a>
+      {% if customer.logged_in %}
+        <a href="{{ customer.urls.account }}">{{ 'account.title' | t }}</a>
+      {% else %}
+        <a href="{{ store.urls.login | default('/login') }}">{{ 'account.login' | t }}</a>
+      {% endif %}
+    </div>
+
+    {# ── Column 3: Customer Service ───────────────── #}
+    <div>
+      <h4>{{ 'footer.customer_service' | t }}</h4>
+      <a href="{{ store.urls.faq | default('/faq') }}">{{ 'footer.faq' | t }}</a>
+      <a href="{{ store.urls.returns | default('/returns') }}">{{ 'footer.returns' | t }}</a>
+      <a href="{{ store.urls.terms | default('/terms') }}">{{ 'footer.terms' | t }}</a>
+      <a href="{{ store.urls.privacy | default('/privacy') }}">{{ 'footer.privacy' | t }}</a>
+    </div>
+
+    {# ── Column 4: Contact ────────────────────────── #}
+    <div>
+      <h4>{{ 'footer.contact_us' | t }}</h4>
+      {% if settings.contact_phone %}
+        <a href="tel:{{ settings.contact_phone | replace({' ':''}) }}">{{ settings.contact_phone }}</a>
+      {% endif %}
+      {% if settings.contact_email %}
+        <a href="mailto:{{ settings.contact_email }}">{{ settings.contact_email }}</a>
+      {% endif %}
+      {% if settings.contact_address %}
+        <a href="#">{{ settings.contact_address }}</a>
+      {% endif %}
+      {% if settings.social_whatsapp %}
+        <a href="https://wa.me/{{ settings.social_whatsapp }}" target="_blank" rel="noopener noreferrer">{{ 'footer.whatsapp_support' | t }}</a>
+      {% endif %}
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © {{ 'now' | date('Y') }} {{ store.name }} — {{ 'footer.rights' | t }}
+  </div>
+</footer>

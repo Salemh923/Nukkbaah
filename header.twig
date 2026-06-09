@@ -1,0 +1,122 @@
+<header class="luxury-header">
+  <div class="header-inner container">
+
+    {# ── Logo + Search + Brand Card ──────────────── #}
+    <div class="top-brand">
+
+      {# Logo #}
+      <a href="{{ store.url | default('/') }}">
+        {% if settings.logo %}
+          <img class="logo-img" src="{{ settings.logo | img_url }}" alt="{{ store.name }}">
+        {% else %}
+          <div class="logo">
+            {{ store.name | split('') | first }}{% if store.name | length > 1 %}<span>{{ store.name | slice(1) }}</span>{% endif %}
+            <small>{{ store.name | upper }}</small>
+          </div>
+        {% endif %}
+      </a>
+
+      {# Search #}
+      <div class="search-wrap">
+        <span class="search-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
+          </svg>
+        </span>
+        <input
+          class="search"
+          type="search"
+          placeholder="{{ 'general.search_placeholder' | t }}"
+          aria-label="{{ 'general.search_placeholder' | t }}"
+          autocomplete="off"
+          id="headerSearch"
+        >
+      </div>
+
+      {# Brand card — desktop only #}
+      <div class="brand-card">
+        <b>{{ 'header.brand_tagline' | t }}</b>
+        <p>{{ 'header.brand_desc' | t }}</p>
+      </div>
+
+    </div>
+
+    {# ── Actions Row ─────────────────────────────── #}
+    <div class="header-actions">
+
+      <a href="{{ store.urls.sell | default('#') }}" class="btn">
+        {{ 'header.sell_btn' | t }}
+      </a>
+
+      <div class="icons">
+
+        {# Cart #}
+        <a class="icon-item" href="{{ store.urls.cart | default('/cart') }}" aria-label="{{ 'header.cart' | t }}">
+          <span class="counter" id="cartCount">{{ cart.count | default(0) }}</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M6 6h15l-2 9H8L6 6z"/>
+            <path d="M6 6 5 3H2"/>
+            <circle cx="9" cy="20" r="1.5"/>
+            <circle cx="18" cy="20" r="1.5"/>
+          </svg>
+          <span>{{ 'header.cart' | t }}</span>
+        </a>
+
+        {# Wishlist #}
+        <a class="icon-item" href="{{ store.urls.wishlist | default('/wishlist') }}" aria-label="{{ 'header.wishlist' | t }}">
+          <span class="counter" id="wishCount">{{ customer.wishlist_count | default(0) }}</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M20.8 4.6c-1.8-1.7-4.6-1.5-6.3.4L12 7.7 9.5 5C7.8 3.1 5 2.9 3.2 4.6c-2 1.9-2 5.1 0 7l8.8 8.4 8.8-8.4c2-1.9 2-5.1 0-7z"/>
+          </svg>
+          <span>{{ 'header.wishlist' | t }}</span>
+        </a>
+
+        {# Compare #}
+        <a class="icon-item" href="{{ store.urls.compare | default('/compare') }}" aria-label="{{ 'header.compare' | t }}">
+          <span class="counter" id="compareCount">0</span>
+          <svg viewBox="0 0 24 24">
+            <path d="M4 7h16M4 17h16M8 3v8M16 13v8"/>
+          </svg>
+          <span>{{ 'header.compare' | t }}</span>
+        </a>
+
+        {# Account #}
+        {% if customer.logged_in %}
+          <a class="icon-item" href="{{ customer.urls.account | default('/account') }}" aria-label="{{ 'account.title' | t }}">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21c1.5-5 14.5-5 16 0"/>
+            </svg>
+            <span>{{ customer.first_name | default(('header.account' | t)) }}</span>
+          </a>
+        {% else %}
+          <a class="icon-item" href="{{ store.urls.login | default('/login') }}" aria-label="{{ 'account.login' | t }}">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21c1.5-5 14.5-5 16 0"/>
+            </svg>
+            <span>{{ 'header.account' | t }}</span>
+          </a>
+        {% endif %}
+
+      </div>
+    </div>
+  </div>
+
+  {# ── Navigation Menu ─────────────────────────────── #}
+  <nav class="menu" aria-label="القائمة الرئيسية">
+    <div class="container">
+      <a {% if page.type == 'index' %}class="active"{% endif %} href="{{ store.url | default('/') }}">{{ 'nav.home' | t }}</a>
+      <a {% if request.path contains 'new' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=new">{{ 'nav.new' | t }}</a>
+      <a {% if request.path contains 'used' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=used">{{ 'nav.used' | t }}</a>
+      <a {% if request.path contains 'electronics' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=electronics">{{ 'nav.electronics' | t }}</a>
+      <a {% if request.path contains 'cars' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=cars">{{ 'nav.cars' | t }}</a>
+      <a {% if request.path contains 'realestate' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=realestate">{{ 'nav.realestate' | t }}</a>
+      <a {% if request.path contains 'watches' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=watches">{{ 'nav.watches' | t }}</a>
+      <a {% if request.path contains 'fashion' %}class="active"{% endif %} href="{{ store.urls.category | default('/category') }}?cat=fashion">{{ 'nav.fashion' | t }}</a>
+    </div>
+  </nav>
+</header>
+
+{# ── Search Results Dropdown (progressive enhancement) ── #}
+<div id="searchDropdown" style="display:none;position:fixed;top:140px;left:50%;transform:translateX(-50%);width:min(620px,92%);background:#071014;border:1px solid #d8a64b44;border-radius:18px;padding:18px;z-index:999;box-shadow:0 30px 80px #000;max-height:60vh;overflow-y:auto;"></div>

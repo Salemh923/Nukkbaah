@@ -1,0 +1,44 @@
+<section class="categories">
+
+  {% if categories is defined and categories | length > 0 %}
+
+    {% for cat in categories | slice(0, 6) %}
+      <a class="cat" href="{{ cat.url }}">
+        {% if cat.image %}
+          <img src="{{ cat.image | img_url('400x300') }}" alt="{{ cat.name }}" loading="lazy">
+        {% endif %}
+        <h3>{{ cat.name }}</h3>
+      </a>
+    {% endfor %}
+
+  {% else %}
+
+    {# Fallback static categories #}
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=electronics">
+      <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?q=80&w=600" alt="{{ 'categories.electronics' | t }}" loading="lazy">
+      <h3>{{ 'categories.electronics' | t }}</h3>
+    </a>
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=watches">
+      <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=600" alt="{{ 'categories.watches' | t }}" loading="lazy">
+      <h3>{{ 'categories.watches' | t }}</h3>
+    </a>
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=cars">
+      <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=600" alt="{{ 'categories.cars' | t }}" loading="lazy">
+      <h3>{{ 'categories.cars' | t }}</h3>
+    </a>
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=realestate">
+      <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600" alt="{{ 'categories.realestate' | t }}" loading="lazy">
+      <h3>{{ 'categories.realestate' | t }}</h3>
+    </a>
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=fashion">
+      <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?q=80&w=600" alt="{{ 'categories.fashion' | t }}" loading="lazy">
+      <h3>{{ 'categories.fashion' | t }}</h3>
+    </a>
+    <a class="cat" href="{{ store.urls.category | default('/category') }}?cat=home">
+      <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600" alt="{{ 'categories.home' | t }}" loading="lazy">
+      <h3>{{ 'categories.home' | t }}</h3>
+    </a>
+
+  {% endif %}
+
+</section>

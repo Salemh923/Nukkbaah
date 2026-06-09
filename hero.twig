@@ -1,0 +1,35 @@
+<section class="hero" style="{% if settings.hero_image %}background-image:linear-gradient(90deg,#000 0%,#000 30%,#0009 55%,#0002 100%),url('{{ settings.hero_image | img_url }}');background-size:cover;background-position:center;{% endif %}">
+
+  <div class="hero-content">
+    <div class="tag">{{ settings.hero_tag | default('منصة سعودية للجديد والمستعمل المضمون') }}</div>
+
+    <h1>
+      {{ settings.hero_title | default('اشترِ الجديد والمستعمل') }}
+      <span>{{ settings.hero_title_highlight | default('بثقة النخبة') }}</span>
+    </h1>
+
+    <p>{{ settings.hero_description | default('منتجات مفحوصة، تفاصيل واضحة، ضمان، تسعير عادل، وسلة شراء ذكية تناسب متجر فاخر قابل للتطوير.') }}</p>
+
+    <div class="hero-actions">
+      <a href="#products" class="btn">{{ settings.hero_btn1_text | default('تسوّق الآن') }}</a>
+      <a href="{{ store.urls.sell | default('/sell') }}" class="btn secondary">قيّم وبيع منتجك</a>
+      <a href="{{ store.urls.category | default('/category') }}?cat=used" class="btn dark">{{ settings.hero_btn2_text | default('تصفح المستعمل') }}</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <b>{{ settings.hero_stat1_value | default('+250') }}</b>
+        {{ settings.hero_stat1_label | default('منتج مفحوص') }}
+      </div>
+      <div class="hero-stat">
+        <b>{{ settings.hero_stat2_value | default('4.8/5') }}</b>
+        {{ settings.hero_stat2_label | default('تقييم العملاء') }}
+      </div>
+      <div class="hero-stat">
+        <b>{{ settings.hero_stat3_value | default('24 ساعة') }}</b>
+        {{ settings.hero_stat3_label | default('تجهيز الطلب') }}
+      </div>
+    </div>
+  </div>
+
+</section>

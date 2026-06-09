@@ -1,0 +1,13 @@
+<section class="sell-panel">
+  <div>
+    <h2>{{ settings.sell_title | default('عندك منتج؟ بيعه بثقة خلال دقائق') }}</h2>
+    <p>{{ settings.sell_description | default('ارفع الصور، اختر الحالة، واحصل على تقييم مبدئي. بعدها يتم فحص المنتج أو عرضه كبائع موثوق داخل المتجر.') }}</p>
+    <a href="{{ store.urls.sell | default('/sell') }}" class="btn">{{ 'sell.start_btn' | t }}</a>
+  </div>
+
+  <div class="steps">
+    <div class="step">1<br><b>{{ 'sell.step1' | t }}</b></div>
+    <div class="step">2<br><b>{{ 'sell.step2' | t }}</b></div>
+    <div class="step">3<br><b>{{ 'sell.step3' | t }}</b></div>
+  </div>
+</section>
