@@ -1,0 +1,39 @@
+{
+  "name": "نُخبة",
+  "version": "1.0.0",
+  "author": "Nukhba",
+  "description": "ثيم فاخر للمتاجر السعودية للجديد والمستعمل المضمون",
+  "homepage": "https://nukhba.sa",
+  "layout": "layout/theme.twig",
+  "templates": {
+    "index": "templates/index.twig",
+    "product": "templates/product.twig",
+    "category": "templates/category.twig",
+    "cart": "templates/cart.twig",
+    "wishlist": "templates/wishlist.twig",
+    "search": "templates/search.twig",
+    "page": "templates/page.twig",
+    "404": "templates/404.twig",
+    "account": "templates/account.twig",
+    "login": "templates/login.twig",
+    "register": "templates/register.twig",
+    "order": "templates/order.twig",
+    "orders": "templates/orders.twig"
+  },
+  "sections": {
+    "header": "sections/header.twig",
+    "footer": "sections/footer.twig",
+    "hero": "sections/hero.twig",
+    "trust-badges": "sections/trust-badges.twig",
+    "categories-grid": "sections/categories-grid.twig",
+    "sell-panel": "sections/sell-panel.twig",
+    "wide-ad": "sections/wide-ad.twig",
+    "featured-products": "sections/featured-products.twig",
+    "premium-boxes": "sections/premium-boxes.twig"
+  },
+  "settings": "config/settings_schema.json",
+  "locales": {
+    "ar": "locales/ar.json",
+    "en": "locales/en.json"
+  }
+}
